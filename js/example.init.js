@@ -2,7 +2,7 @@
 window.webdoc = WebDoc;
 window.app = webdoc.App;
 app.onload = app.onLoad;
-app.onselection = app.onSelectionChange;
+app.onselection = app.onSelectionChanged;
 
 
 
