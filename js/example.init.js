@@ -21,4 +21,20 @@ app.onselection(function(selection) {
 	console.log('APP selection', selection);
 	
 	
+	
 });
+
+app.onLoad = function() {
+	console.log('APP onLoad', arguments);
+	
+	
+	
+	
+};
+
+app.onSelectionChanged = function(selection) {
+	console.log('APP onSelectionChanged', selection);
+	
+	
+	
+};
