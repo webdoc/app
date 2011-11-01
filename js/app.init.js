@@ -86,3 +86,18 @@ window.app = WebDoc.App;
 		trigger('selectionchange', selection);
 	};
 })(app);
+
+
+
+
+
+
+
+app.ready(function() {
+	console.log('HELLO, WORLD!');
+});
+
+app.bind('selectionchange', function() {
+	console.log('SELECTION', args);
+});
+
