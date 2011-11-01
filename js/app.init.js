@@ -105,7 +105,14 @@ app.bind('selectionchange', function() {
 	console.log('SELECTION', this, arguments);
 });
 
-app.bind('selectionchange', function() {
+
+
+
+function test() {
 	console.log('SELECTION2', this, arguments);
-});
+}
+
+app.bind('selectionchange', test);
+
+app.unbind('selectionchange', test);
 
