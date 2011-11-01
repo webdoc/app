@@ -1,27 +1,31 @@
-WebDoc.App
-
-- WebDoc should be 'webdoc' and App 'app'.
-
-
-WebDoc.App.onLoad()
-
-- .onload should be all lowercase to match DOM API convention.
-- Does this take a callback function?
-
-
 
 
 The webdoc app API
 
 
+Methods
+
+
+
 .ready(fn)
 
-The app API loads in two stages. Functions passed into .ready() will be fired as soon as the full app API is ready to use. If the app API is already ready, this function will fire immediately.
+The app API loads in two stages. Functions passed into .ready() will be fired as soon as the full app API is ready to use. If the app API is already ready, the passed function will fire immediately.
 
 Note that this does not mean that the DOM is ready.
 
 
-.select(fn)
+
+.bind(type, function)
+
+Bind a handler function to be called whenever an event of type is emitted by webdoc. For a full list of events, see webdoc events.
+
+
+
+.unbind(type [, function])
+
+Unbind a handler function from events of this type. Where more than one instance of the given handler function is bound to the event, they are all removed.
+
+If no function is provided, all handler functions are unbound from this event.
 
 
 
@@ -62,3 +66,17 @@ If an optional position object is passed the image will be inserted at that posi
 
 
 
+
+Webdoc events
+
+
+
+ready
+The ready event fires when the full webdoc app API is available.
+
+See also the .ready() method, which will call callbacks immediately if the app has already entered ready state.
+
+
+
+selectionchange
+Triggered when the selected items in the webdoc change. Handler functions are passed one argument: an array of currently selected items. If the selection has changed so that nothing is selected, the array will be empty.
