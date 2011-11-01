@@ -1,0 +1,48 @@
+Preparing items for drag and drop from your app
+
+
+If you want to display items that the user can drag onto their webdoc, you need to give them some data that webdoc will understand. Normally, you would do this using the browser's drag and drop API. The drag and drop API requires that data is set on nodes when the dragstart event is received. The data you set depends on the mimetype that you want to send with the dragged node. Some browsers respond to some mimetypes, some to only one or two. It's all a bit of a hassle to set up.
+
+The webdoc app template provides a shortcut to make this easy.
+
+To create a draggable node in your webdoc app:
+
+1. The node should have the boolean attribute draggable="draggable"
+2. Attach the data to send either by defining a JSON object in a data-mimetypes attribute:
+
+<div draggable="draggable" data-mimetypes='{"wd-image":"http://webdoc.com/stelio.gif","text/uri-list":"http://webdoc.com/stelio.gif"}'>Drag me!</div>
+
+...or alternatively by setting mimetypes data via jQuery:
+
+jQuery(node).data('mimetypes', {
+  'wd-image': 'http://webdoc.com/stelio.gif',
+  'text/uri-list': 'http://webdoc.com/stelio.gif'
+});
+
+You can specify as many mimetypes as you like. That's it. The app template will now take care of sending this data when the node is dragged.
+
+Webdoc accepts the following custom mimetypes:
+
+
+application/wd-widget: {
+  system_name: the system name of the widget to insert
+  preferences: a json with widget preferences
+}
+
+application/wd-image: {
+  url
+}
+
+application/wd-video {
+  video_id: the url to the video (can be vimeo, youtube or other supported video services)
+  title: the title of the video (optional)
+}
+
+application/wd-music {
+  url: the url of a resource on SoundCloud
+}
+
+text/uri-list: url
+
+
+For more on the standard drag and drop API, visit the Mozilla Development Network: https://developer.mozilla.org/en/DragDrop/Drag_and_Drop

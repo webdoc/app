@@ -3,6 +3,8 @@
 The webdoc app API
 
 
+
+
 Methods
 
 
@@ -65,6 +67,14 @@ Inserts a widget into a webdoc, where name is the widget's name and preferences 
 If an optional position object is passed the image will be inserted at that position, otherwise the position will be calculated automatically.
 
 See webdoc widgets for a list of widgets and their preferences.
+
+
+
+
+.insertIntoItem(url [, contentType])
+
+Some items in a webdoc have content that is editable. This method allows you to insert more content into them.
+
 
 
 
@@ -134,9 +144,6 @@ Domain name where the app is hosted
 lang
 
 The current language that webdoc's user interface is set to. Note that this is not the language that the webdoc may be written in.
-
-
-
 
 
 
