@@ -90,29 +90,14 @@ window.app = WebDoc.App;
 
 
 
-
-
-
 app.ready(function() {
-	console.log('HELLO, WORLD!', this, arguments);
-});
-
-app.bind('ready', function() {
-	console.log('READY', this, arguments);
-});
-
-app.bind('selectionchange', function() {
-	console.log('SELECTION', this, arguments);
+	var _request = this.request;
+	
+	// Duck tape request to provide a more convenient options object.
+	this.request = function(url, options) {
+		_request.call(this, url, options.type || 'GET', options.headerValues, options.data, options.callback);
+	};
 });
 
 
-
-
-function test() {
-	console.log('SELECTION2', this, arguments);
-}
-
-app.bind('selectionchange', test);
-
-app.unbind('selectionchange', test);
 

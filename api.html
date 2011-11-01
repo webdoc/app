@@ -64,6 +64,80 @@ Inserts a widget into a webdoc, where name is the widget's name and preferences 
 
 If an optional position object is passed the image will be inserted at that position, otherwise the position will be calculated automatically.
 
+See webdoc widgets for a list of widgets and their preferences.
+
+
+
+.fbGraphAPI(path, verb, params, callback)
+
+When the current user is connected to Facebook, fbGraphAPI returns some data about his facebook something.
+
+
+
+
+.t(key, options)
+
+A function for translating strings.
+
+
+
+request(url, options)
+The request method allow you to made cross domain request by passing through the webdoc proxy. It return both the response and the header.
+
+The options object can have the following properties:
+
+- type: 'GET'
+- data: object of key-value pairs to be added to the request
+- postData: object
+- callback: fn(data), called with a single object as an argument on completion of the request. The data object has the proeprties
+
+- status: The status code of the response (200, 404, ...)
+- response: The data returned from the server (HTML, XML, JSON, ...)
+- header: An object containing the header returned by the proxy
+
+
+
+Properties
+
+user
+
+Object that represents the current user. A user object may have the following properties:
+
+- avatar_thumb_url
+- bio
+- birthday
+- created_at
+- documents_count
+- first_name
+- followers_count
+- following_count
+- gender
+- has_facebook_token
+- has_the_orchard_account
+- has_twitter_token
+- id
+- is_admin
+- is_safe
+- last_name
+- registration
+- user_type
+- username
+- uuid
+- website
+
+
+host
+
+Domain name where the app is hosted
+
+
+lang
+
+The current language that webdoc's user interface is set to. Note that this is not the language that the webdoc may be written in.
+
+
+
+
 
 
 
