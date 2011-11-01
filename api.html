@@ -1,0 +1,64 @@
+WebDoc.App
+
+- WebDoc should be 'webdoc' and App 'app'.
+
+
+WebDoc.App.onLoad()
+
+- .onload should be all lowercase to match DOM API convention.
+- Does this take a callback function?
+
+
+
+
+The webdoc app API
+
+
+.ready(fn)
+
+The app API loads in two stages. Functions passed into .ready() will be fired as soon as the full app API is ready to use. If the app API is already ready, this function will fire immediately.
+
+Note that this does not mean that the DOM is ready.
+
+
+.select(fn)
+
+
+
+.insertImage(url, [position])
+
+Inserts an image into the webdoc. URL is the path to the image to be inserted.
+
+If an optional position object is passed the image will be inserted at that position, otherwise the position will be calculated automatically. A position object should look like this:
+
+{
+  top: n,
+  left: m
+}
+
+...where values for n and m are distances in pixels.
+
+
+
+.insertItem(url, [position])
+
+Inserts an item into the webdoc. The type of item is determined by the resource that the URL points to. If it is a YouTube link, the item will be a video. If it is an image, the item will be an image.
+
+Webdoc accepts various item types:
+
+Image
+Video
+Googlemap
+
+If an optional position object is passed the image will be inserted at that position, otherwise the position will be calculated automatically.
+
+
+
+.insertWidget(name, preferences, [position])
+
+Inserts a widget into a webdoc, where name is the widget's name and preferences is key value object of options to pass to the widget.
+
+If an optional position object is passed the image will be inserted at that position, otherwise the position will be calculated automatically.
+
+
+
