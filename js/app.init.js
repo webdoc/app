@@ -26,7 +26,7 @@ window.app = WebDoc.App;
 		m = -1;
 		args = Array.prototype.slice.call(arguments, 1);
 
-		if (debug) { console.group('[trigger]', type); }
+		if (debug) { console.group('[app]', type); }
 
 		while ( ++m < l ) {
 			fn = list[m];
@@ -94,10 +94,18 @@ window.app = WebDoc.App;
 
 
 app.ready(function() {
-	console.log('HELLO, WORLD!');
+	console.log('HELLO, WORLD!', this, arguments);
+});
+
+app.bind('ready', function() {
+	console.log('READY', this, arguments);
 });
 
 app.bind('selectionchange', function() {
-	console.log('SELECTION', arguments);
+	console.log('SELECTION', this, arguments);
+});
+
+app.bind('selectionchange', function() {
+	console.log('SELECTION2', this, arguments);
 });
 
