@@ -1,0 +1,53 @@
+What is a webdoc app?
+
+A webdoc app is an application that can be used by authors to help create webdocs. It appears in the sidebar to the right of a webdoc when in edit mode. A webdoc app can place and modify items in a webdoc, display content that can be dragged and dropped onto a webdoc, and request information about a webdoc and it's author.
+
+The app is displayed inside an iframe, so you have full control over how your app looks an behaves.
+
+
+
+How to make a webdoc app
+
+1. Grab a copy of the repository at http://github.com/webdoc/app. It has everything you need to get started:
+
+  - A script tag that loads the webdoc app API.
+  - A blank icon.png.
+  - A config.xml file.
+  - Links to CSS and JS for creating apps that look and behave like webdoc's apps.
+
+2. Make an icon and place it in the root directory of your app. The icon must be a PNG file with square dimensions. 64px x 64px would be a good choice.
+
+3. Study the API and get coding.
+
+4. Upload the app the webdoc.com.
+
+
+
+How to upload your app to webdoc
+
+1. Make sure you have an icon in your root directory.
+
+2. Make sure that your config.xml file has your app's name, version and a reference to the index.html file of your app. It should look something like this:
+
+<?xml version="1.0" encoding="UTF-8"?>
+<app version="1.0">        
+  <name>my_app</name>
+  <version>1.0</version>
+  <description>My app description</description>
+  <content src="index.html"/> 
+</app>
+
+- <name> is used as the title of your app in webdoc, after having underscores replaced with spaces and the first letter capitalised.
+- <version> must be a floating point number.
+- <content> should have a src attribute that is a relative URL pointing to your app's index file.
+
+3. Zip up all the files into one package, including all your CSS and JS.
+
+4. upload the package at http://webdoc.com/admin.
+
+
+
+You can also host your app yourself
+
+Follow the instructions above, but at step 2 the <content> src attribute should be an absolute URL to the index file where you app is hosted, and at step 3 your Zip package can contain simply the files config.xml and icon.png.
+

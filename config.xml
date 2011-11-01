@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<app version="1.0">        
-  <name>Example</name>
-  <description>Example description</description>
-  <content src="http://webdoc.github.com/app/index.html"/> 
+<app version="0.1">
+  <name>app_template</name>
+  <version>0.1</version>
+  <description>This app template helps app authors get started creating their apps.</description>
+  <content src="http://webdoc.github.com/app/index.html"/>
 </app>

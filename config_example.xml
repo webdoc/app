@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<app version="0.1">
+  <name>Example</name>
+  <version>0.1</version>
+  <description>Example description</description>
+  <content src="index.html"/>
+</app>
