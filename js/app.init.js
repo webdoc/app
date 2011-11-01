@@ -98,6 +98,6 @@ app.ready(function() {
 });
 
 app.bind('selectionchange', function() {
-	console.log('SELECTION', args);
+	console.log('SELECTION', arguments);
 });
 
