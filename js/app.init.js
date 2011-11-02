@@ -85,19 +85,17 @@ window.app = WebDoc.App;
 	app.onSelectionChanged = function(selection) {
 		trigger('selectionchange', selection);
 	};
-})(app);
-
-
-
-
-app.ready(function() {
-	var _request = this.request;
 	
-	// Duck tape request to provide a more convenient options object.
-	this.request = function(url, options) {
-		_request.call(this, url, options.type || 'GET', options.headerValues, options.data, options.callback);
-	};
-});
+	// Things to do to the API on ready
+  app.ready(function() {
+  	var _request = this.request;
+  	
+  	// Duck tape request to provide a more convenient options object.
+  	this.request = function(url, options) {
+  		_request.call(this, url, options.type || 'GET', options.headerValues, options.data, options.callback);
+  	};
+  });
+})(app);
 
 
 
