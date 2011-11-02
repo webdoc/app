@@ -79,6 +79,7 @@ window.app = WebDoc.App;
 	};
 	
 	app.onLoad = function() {
+		ready = true;
 		trigger('ready');
 	};
 	

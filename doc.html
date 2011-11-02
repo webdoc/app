@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" class="js">
+<head>
+	<meta charset="utf-8" />
+	<meta name="author" content="">
+	<meta name="description" content="">
+	
+	<title>App API</title>
+	
+	<!-- Include template -->
+	<link rel="stylesheet" type="text/css" href="http://webdoc.github.com/template/css/template.reset.css" />
+	<link rel="stylesheet" type="text/css" href="http://webdoc.github.com/template/css/template.typography.css" />
+	<link rel="stylesheet" type="text/css" href="http://webdoc.github.com/template/css/template.typography.12_18.css" />
+	<link rel="stylesheet" type="text/css" href="http://webdoc.github.com/template/css/template.forms.css" />
+	<link rel="stylesheet" type="text/css" href="http://webdoc.github.com/template/css/template.classes.css" />
+</head>
+
+<body>
+	<nav id="nav"></nav>
+
+	<section class="anchor" id="a1">
+		One
+		
+		<section class="anchor" id="a11">
+			One one
+		</section>
+		
+		<section class="anchor" id="a12">
+			One two
+		</section>
+	</section>
+
+	<section class="anchor" id="a2">
+		Two
+	</section>
+
+	<section class="anchor" id="a3">
+		Three
+	</section>
+	
+	<!-- Include jQuery -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+	<script>!window.jQuery && document.write(unescape('%3Cscript src="js/jquery.js"%3E%3C/script%3E'));</script>
+
+	<!-- Include template -->
+	<script src="http://webdoc.github.com/template/js/js.extensions.js"></script>
+	<script src="http://webdoc.github.com/template/js/js.details.js"></script>
+	<script src="http://webdoc.github.com/template/js/jquery.extensions.js"></script>
+	<script src="http://webdoc.github.com/template/js/jquery.event.activate.js"></script>
+	<script src="http://webdoc.github.com/template/js/jquery.validator.js"></script>
+	<script src="http://webdoc.github.com/template/js/jquery.transitions.js"></script>
+	<script src="http://webdoc.github.com/template/js/jquery.loading.js"></script>
+	<script src="http://webdoc.github.com/template/js/template.ui.js"></script>
+	
+	<script type="text/javascript">
+		
+		
+		// jQuery.tree
+		// 
+		// Construct a tree out of any selector. Returns a deep array-like
+		// object that represents the tree described by all the nodes of
+		// this selector found inside this node. Alternatively, if a
+		// callback function is defined, returns the result of the callback.
+		// 
+		// jQuery.tree(node, selector, callback)
+		// 
+		// The callback is called with the arguments (tree, n), where n is
+		// the total number of nodes in the tree.
+		
+		jQuery.tree = function(node, selector, fn) {
+			var anchors = jQuery(node).find(selector),
+			    l = anchors.length,
+			    n = -1,
+			    array = {
+			    	length: 0,
+			    	node: node
+			    };
+			
+			while (++n < l) {
+				jQuery.tree(anchors[n], selector, function(subArray, m) {
+					Array.prototype.push.call(array, subArray);
+					n = n + m;
+				});
+			}
+			
+			return fn ? fn(array, n) : array ;
+		};
+		
+		
+		// -------------
+		
+		
+		var tree = jQuery.tree(document.body, '.anchor'),
+		    nav = jQuery('#nav'),
+		    item = '<li><a href="#{{id}}">{{title}}</a>{{sub}}</li>';
+		
+		function renderList(tree, classes) {
+			var html = '<ul class="' + (classes || '') + '">',
+			    n = -1,
+			    l = tree.length,
+			    node, entry;
+			
+			while (++n < l) {
+				entry = tree[n];
+				node = entry.node;
+				
+				html += jQuery.render(item, {
+					id: node.id,
+					title: node.id,
+					sub: entry.length ? renderList(entry, 'subnav_index index') : ''
+				});
+			}
+			
+			html += '</ul>';
+			
+			return html;
+		}
+		
+		nav.html(renderList(tree, 'nav_index index'));
+	</script>
+</body>
+</html>
