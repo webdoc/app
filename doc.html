@@ -13,30 +13,196 @@
 	<link rel="stylesheet" type="text/css" href="http://webdoc.github.com/template/css/template.typography.12_18.css" />
 	<link rel="stylesheet" type="text/css" href="http://webdoc.github.com/template/css/template.forms.css" />
 	<link rel="stylesheet" type="text/css" href="http://webdoc.github.com/template/css/template.classes.css" />
+	
+	<link rel="stylesheet" type="text/css" href="css/doc.classes.css" />
 </head>
 
 <body>
-	<nav id="nav"></nav>
+	<div class="api_wrap wrap">
 
-	<section class="anchor" id="a1">
-		One
+
+
+
+<section class="tab active anchor" id="intro">
+	<h1>Introduction</h1>
+	<h2 class="anchor" id="what">What is a webdoc app?</h2>
+
+	<p>A webdoc app is an application that can be used by authors to help create webdocs. It appears in the sidebar to the right of a webdoc when in edit mode. A webdoc app can place and modify items in a webdoc, display content that can be dragged and dropped onto a webdoc, and request information about a webdoc and it's author.
+
+	<p>The app is displayed inside an iframe, so you have full control over how your app looks an behaves.
+
+
+
+	<h2 class="anchor" id="how">How to make a webdoc app</h2>
+
+	<ol>
+		<li>Grab a copy of the repository at http://github.com/webdoc/app. It has everything you need to get started:
+
+  - A script tag that loads the webdoc app API.
+  - A blank icon.png.
+  - A config.xml file.
+  - Links to CSS and JS for creating apps that look and behave like webdoc's apps.
+
+		<li>Make an icon and place it in the root directory of your app. The icon must be a PNG file with square dimensions. 64px x 64px would be a good choice.
+
+		<li>Study the API and get coding.
+
+		<li>Upload the app the webdoc.com.
+	</ol>
+
+	<h2 class="anchor" id="ul">How to upload your app to webdoc</h2>
+
+	<ol>
+		<li>Make sure you have an icon in your root directory.
+		<li>Make sure that your config.xml file has your app's name, version and a reference to the index.html file of your app. It should look something like this:
+
+
+<pre><code>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;app version=&quot;1.0&quot;&gt;        
+  &lt;name&gt;my_app&lt;/name&gt;
+  &lt;version&gt;1.0&lt;/version&gt;
+  &lt;description&gt;My app description&lt;/description&gt;
+  &lt;content src=&quot;index.html&quot;/&gt; 
+&lt;/app&gt;
+</code></pre>
+
+			<ul>
+				<li><code>&lt;name&gt;</code> is used as the title of your app in webdoc, after having underscores replaced with spaces and the first letter capitalised.
+				<li><code>&lt;version&gt;</code> must be a floating point number.
+				<li><code>&lt;content&gt;</code> should have a src attribute that is a relative URL pointing to your app's index file.
+			</ul>
+
+		<li>Zip up all the files into one package, including all your CSS and JS.
+		<li>upload the package at http://webdoc.com/admin.
+	</ol>
+
+
+	<p>You can also host your app yourself
+
+	<p>Follow the instructions above, but at step 2 the<code>&lt;content&gt;</code> src attribute should be an absolute URL pointing to the index file where your app is hosted, and at step 3 your Zip package can contain simply the files config.xml and icon.png.
+</section>
+
+
+<section class="tab anchor" id="prop">
+	<h1>Properties</h1>
+	
+	<dl>
+		<dt class="anchor" id="user_prop">user</dt>
+		<dd>
+			<p>Object that represents the current user. A user object may have the following properties:</p>
+
+			<!--ul>
+				<li>avatar_thumb_url
+				<li>bio
+				<li>birthday
+				<li>created_at
+				<li>documents_count
+				<li>first_name
+				<li>followers_count
+				<li>following_count
+				<li>gender
+				<li>has_facebook_token
+				<li>has_the_orchard_account
+				<li>has_twitter_token
+				<li>id
+				<li>is_admin
+				<li>is_safe
+				<li>last_name
+				<li>registration
+				<li>user_type
+				<li>username
+				<li>uuid
+				<li>website
+			</ul-->
+		</dd>
+
+		<dt class="anchor" id="host_prop">host</dt>
+		<dd>Domain name where the app is hosted.</dd>
+
+		<dt class="anchor" id="lang_prop">lang</dt>
+		<dd>The current language that webdoc's user interface is set to. Note that this is not the language that the webdoc may be written in.</dd>
+	</dl>
+</section>
+
+
+<section class="tab anchor" id="events">
+	<h1>Events</h1>
+	
+	<dl>
+		<dt class="anchor" id="ready_event">ready</dt>
+		<dd>
+			<p>The ready event fires when the full webdoc app API is available.
+
+			<p>See also the .ready() method, which will call callbacks immediately if the app is already in ready state.
+		</dd>
 		
-		<section class="anchor" id="a11">
-			One one
-		</section>
+		<dt class="anchor" id="sel_event">selectionchange</dt>
+		<dd>
+			<p>Triggered when the selected items in the webdoc change. Handler functions are passed one argument: an array of currently selected items. If the selection has changed so that nothing is selected, the array will be empty.
+		</dd>
+	</dl>
+</section>
+
+<section class="tab anchor" id="dnd">
+	<h1>Preparing items for drag and drop</h1>
+	
+	<p>If you want to display items that the user can drag onto their webdoc, you need to give them some data that webdoc will understand. Normally, you would do this using the browser's drag and drop API. The drag and drop API requires that data is set on nodes when the dragstart event is received. The data you set depends on the mimetype that you want to send with the dragged node. Some browsers respond to some mimetypes, some to only one or two. It's all a bit of a hassle to set up.
+	
+	<p>The webdoc app template provides a shortcut to make this easy. To create a draggable node in your webdoc app:
+
+	<ol>	
+		<li>Give the node the boolean attribute <code>draggable="draggable"</code>
+		<li>Attach the data to send either by defining a JSON object in a data-mimetypes attribute:
+			<pre><code>
+&lt;div draggable=&quot;draggable&quot; data-mimetypes='{&quot;wd-image&quot;:&quot;http://webdoc.com/stelio.gif&quot;,&quot;text/uri-list&quot;:&quot;http://webdoc.com/stelio.gif&quot;}'&gt;Drag me!&lt;/div&gt;
+</code></pre>
+	...or alternatively by setting mimetypes data via jQuery:
+	<pre><code>
+jQuery(node).data('mimetypes', {
+  'wd-image': 'http://webdoc.com/stelio.gif',
+  'text/uri-list': 'http://webdoc.com/stelio.gif'
+});
+</code></pre>
+	
+	You can specify as many mimetypes as you like, but for compatibility across all browsers at the very least a <code>text/uri-list</code> mimetype should be defined.
+		</li>
+	</ol>
+	
+	<p>That's it. The app template will now take care of sending this data when the node is dragged.
+	
+	<h2 class="anchor" id="mimetypes">Custom mimetypes</h2>
+	
+	<p>Webdoc accepts the following custom mimetypes and associated data:
+
+<pre><code>
+application/wd-widget: {
+  system_name: the system name of the widget to insert
+  preferences: a json with widget preferences
+}
+
+application/wd-image: {
+  url
+}
+
+application/wd-video {
+  video_id: the url to the video (can be vimeo, youtube or other supported video services)
+  title: the title of the video (optional)
+}
+
+application/wd-music {
+  url: the url of a resource on SoundCloud
+}
+
+text/uri-list: url
+</code></pre>
+	
+	<p>For more on the standard drag and drop API, visit the <a href="https://developer.mozilla.org/en/DragDrop/Drag_and_Drop">Mozilla Development Network</a>.
+</section>
+
 		
-		<section class="anchor" id="a12">
-			One two
-		</section>
-	</section>
-
-	<section class="anchor" id="a2">
-		Two
-	</section>
-
-	<section class="anchor" id="a3">
-		Three
-	</section>
+		<nav class="api_nav nav" id="nav"></nav>
+	</div>
 	
 	<!-- Include jQuery -->
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
@@ -59,15 +225,15 @@
 		// 
 		// Construct a tree out of any selector. Returns a deep array-like
 		// object that represents the tree described by all the nodes of
-		// this selector found inside this node. Alternatively, if a
-		// callback function is defined, returns the result of the callback.
+		// this selector found inside node. Alternatively, if a callback
+		// function is defined, returns the result of the callback.
 		// 
 		// jQuery.tree(node, selector, callback)
 		// 
 		// The callback is called with the arguments (tree, n), where n is
 		// the total number of nodes in the tree.
 		
-		jQuery.tree = function(node, selector, fn) {
+		jQuery.tree = function tree(node, selector, fn) {
 			var anchors = jQuery(node).find(selector),
 			    l = anchors.length,
 			    n = -1,
@@ -77,7 +243,7 @@
 			    };
 			
 			while (++n < l) {
-				jQuery.tree(anchors[n], selector, function(subArray, m) {
+				tree(anchors[n], selector, function(subArray, m) {
 					Array.prototype.push.call(array, subArray);
 					n = n + m;
 				});
@@ -88,27 +254,38 @@
 		
 		
 		// -------------
+		// 
+		// Automatically construct navigation bar from the document tree
 		
 		
 		var tree = jQuery.tree(document.body, '.anchor'),
 		    nav = jQuery('#nav'),
-		    item = '<li><a href="#{{id}}">{{title}}</a>{{sub}}</li>';
+		    item = '<li><a class="menu_button button" href="#{{id}}">{{title}}</a>{{sub}}</li>';
 		
-		function renderList(tree, classes) {
-			var html = '<ul class="' + (classes || '') + '">',
+		function renderList(tree) {
+			var args = Array.prototype.slice.call(arguments, 1),
+			    className = args.shift(1),
+			    html = '<ul ' + (className ? 'class="' + (className) + '" ' : '') + '>',
 			    n = -1,
 			    l = tree.length,
-			    node, entry;
+			    node, entry, params, elem, title;
 			
 			while (++n < l) {
 				entry = tree[n];
 				node = entry.node;
-				
-				html += jQuery.render(item, {
+				elem = jQuery(node);
+				title = elem.children('h1, h2, h3, h4').eq(0);
+				params = {
 					id: node.id,
-					title: node.id,
-					sub: entry.length ? renderList(entry, 'subnav_index index') : ''
-				});
+					title: title.length ? title.html() : elem.html()
+				};
+				
+				if (entry.length) {
+					args.splice(0, 0, entry);
+					params.sub = renderList.apply(this, args)
+				}
+				
+				html += jQuery.render(item, params);
 			}
 			
 			html += '</ul>';
@@ -116,7 +293,7 @@
 			return html;
 		}
 		
-		nav.html(renderList(tree, 'nav_index index'));
+		nav.html(renderList(tree, 'nav_index index', 'subnav_index index'));
 	</script>
 </body>
 </html>

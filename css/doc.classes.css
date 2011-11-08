@@ -1,0 +1,23 @@
+.api_wrap {
+  padding-left: 16em;
+}
+
+.api_nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 14em;
+  padding: 1em;
+}
+
+/* Open and close subnav based on whether its content
+   is active. */
+
+.nav_index > li > a ~ ul {
+  display: none;
+}
+
+.nav_index > li > a.active ~ ul {
+  display: block;
+}
