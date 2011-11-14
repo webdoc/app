@@ -1,5 +1,11 @@
+body {
+	padding-top: 1em;
+	padding-bottom: 1em;
+}
+
 .api_wrap {
-  padding-left: 16em;
+  padding-left: 24em;
+  padding-right: 1em;
 }
 
 .api_nav {
@@ -7,8 +13,24 @@
   top: 0;
   left: 0;
   bottom: 0;
-  width: 14em;
+  width: 22em;
   padding: 1em;
+  
+  border-right: 1px solid #cccccc;
+}
+
+.menu_button {
+	background: transparent;
+	white-space: normal;
+	height: auto;
+}
+
+.menu_button:hover {
+	background: #cccccc;
+}
+
+.method_title {
+	margin-top: 2em;
 }
 
 /* Open and close subnav based on whether its content
@@ -20,4 +42,8 @@
 
 .nav_index > li > a.active ~ ul {
   display: block;
+}
+
+.nav_index > li > ul {
+  list-style: none;
 }

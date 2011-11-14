@@ -25,7 +25,7 @@
 
 <section class="tab active anchor" id="intro">
 	<h1>Introduction</h1>
-	<h2 class="anchor" id="what">What is a webdoc app?</h2>
+	<h2 class="method_title anchor" id="what">What is a webdoc app?</h2>
 
 	<p>A webdoc app is an application that can be used by authors to help create webdocs. It appears in the sidebar to the right of a webdoc when in edit mode. A webdoc app can place and modify items in a webdoc, display content that can be dragged and dropped onto a webdoc, and request information about a webdoc and it's author.
 
@@ -33,7 +33,7 @@
 
 
 
-	<h2 class="anchor" id="how">How to make a webdoc app</h2>
+	<h2 class="method_title anchor" id="how">How to make a webdoc app</h2>
 
 	<ol>
 		<li>Grab a copy of the repository at http://github.com/webdoc/app. It has everything you need to get started:
@@ -50,7 +50,7 @@
 		<li>Upload the app the webdoc.com.
 	</ol>
 
-	<h2 class="anchor" id="ul">How to upload your app to webdoc</h2>
+	<h2 class="method_title anchor" id="ul">How to upload your app to webdoc</h2>
 
 	<ol>
 		<li>Make sure you have an icon in your root directory.
@@ -87,42 +87,150 @@
 <section class="tab anchor" id="prop">
 	<h1>Properties</h1>
 	
-	<dl>
-		<dt class="anchor" id="user_prop">user</dt>
-		<dd>
-			<p>Object that represents the current user. A user object may have the following properties:</p>
+		<h2 class="method_title anchor" id="user_prop">.user</h2>
+	
+	<p>Object that represents the current user. A user object may have the following properties:</p>
 
-			<!--ul>
-				<li>avatar_thumb_url
-				<li>bio
-				<li>birthday
-				<li>created_at
-				<li>documents_count
-				<li>first_name
-				<li>followers_count
-				<li>following_count
-				<li>gender
-				<li>has_facebook_token
-				<li>has_the_orchard_account
-				<li>has_twitter_token
-				<li>id
-				<li>is_admin
-				<li>is_safe
-				<li>last_name
-				<li>registration
-				<li>user_type
-				<li>username
-				<li>uuid
-				<li>website
-			</ul-->
+			<dl>
+				<dt>avatar_thumb_url
+				<dt>bio
+				<dt>birthday
+				<dt>created_at
+				<dt>documents_count
+				<dt>first_name
+				<dt>followers_count
+				<dt>following_count
+				<dt>gender
+				<dt>has_facebook_token
+				<dt>has_the_orchard_account
+				<dt>has_twitter_token
+				<dt>id
+				<dt>is_admin
+				<dt>is_safe
+				<dt>last_name
+				<dt>registration
+				<dt>user_type
+				<dt>username
+				<dt>uuid
+				<dt>website
+			</dl>
 		</dd>
 
-		<dt class="anchor" id="host_prop">host</dt>
-		<dd>Domain name where the app is hosted.</dd>
+		<h2 class="method_title anchor" id="host_prop">.host</h2>
+		<p>Domain name where the app is hosted.</p>
 
-		<dt class="anchor" id="lang_prop">lang</dt>
-		<dd>The current language that webdoc's user interface is set to. Note that this is not the language that the webdoc may be written in.</dd>
-	</dl>
+		<h2 class="method_title anchor" id="lang_prop">.lang</h2>
+		<p>The current language that webdoc's user interface is set to. Note that this is not the language that the webdoc may be written in.</p>
+</section>
+
+
+
+
+<section class="tab anchor" id="methods">
+	<h1>Methods</h1>
+	<h2 class="method_title anchor" id="ready_method" data-title=".ready()">.ready(fn)</h2>
+
+<p>The app API loads in two stages. Functions passed into .ready() will be fired as soon as the full app API is ready to use. If the app API is already ready, the passed function will fire immediately.
+
+<p>Note that this does not mean that the DOM is ready.
+
+
+
+<h2 class="method_title anchor" id="bind_method" data-title=".bind()">.bind(type, function)</h2>
+
+<p>Bind a handler function to be called whenever an event of type is emitted by webdoc. For a full list of events, see webdoc events.
+
+
+
+<h2 class="method_title anchor" id="unbind_method" data-title=".unbind()">.unbind(type [, function])</h2>
+
+<p>Unbind a handler function from events of this type. Where more than one instance of the given handler function is bound to the event, they are all removed.
+
+<p>If no function is provided, all handler functions are unbound from this event.
+
+
+
+<h2 class="method_title anchor" id="image_method" data-title=".insertImage()">.insertImage(url, [position])</h2>
+
+<p>Inserts an image into the webdoc. URL is the path to the image to be inserted.
+
+<p>If an optional position object is passed the image will be inserted at that position, otherwise the position will be calculated automatically. A position object should look like this:</p>
+
+<pre><code>{
+  top: n,
+  left: m
+}</code></pre>
+
+<p>...where values for n and m are distances in pixels.
+
+
+
+<h2 class="method_title anchor" id="item_method" data-title=".insertItem()">.insertItem(url, [position])</h2>
+
+<p>Inserts an item into the webdoc. The type of item is determined by the resource that the URL points to. If it is a YouTube link, the item will be a video. If it is an image, the item will be an image.
+
+<p>Webdoc accepts various item types:</p>
+
+<ul>
+<li>Image
+<li>Video
+<li>Googlemap
+</ul>
+
+<p>If an optional position object is passed the image will be inserted at that position, otherwise the position will be calculated automatically.
+
+
+
+<h2 class="method_title anchor" id="insert_method" data-title=".insertWidget()">.insertWidget(name, preferences, [position])</h2>
+
+<p>Inserts a widget into a webdoc, where name is the widget's name and preferences is key value object of options to pass to the widget.
+
+<p>If an optional position object is passed the image will be inserted at that position, otherwise the position will be calculated automatically.
+
+<p>See webdoc widgets for a list of widgets and their preferences.
+
+
+
+
+<h2 class="method_title anchor" id="into_method" data-title=".insertIntoItem()">.insertIntoItem(url [, contentType])</h2>
+
+<p>Some items in a webdoc have content that is editable. This method allows you to insert more content into them.
+
+
+
+
+<h2 class="method_title anchor" id="fb_method" data-title=".fbGraphAPI()">.fbGraphAPI(path, verb, params, callback)</h2>
+
+<p>When the current user is connected to Facebook, fbGraphAPI returns some data about his facebook something.
+
+
+
+
+<h2 class="method_title anchor" id="t_method" data-title=".t()">.t(key, options)</h2>
+
+<p>A function for translating strings.
+
+
+
+<h2 class="method_title anchor" id="t_method" data-title=".request()">.request(url, options)</h2>
+
+<p>The request method allow you to made cross domain request by passing through the webdoc proxy. It return both the response and the header.
+
+<p>The options object can have the following properties:
+
+<dl>
+<dt>type</dt><dd>'GET' by default</dd>
+<dt>data</dt><dd>object of key-value pairs to be added to the request</dd>
+<dt>postData</dt><dd>object</dd>
+<dt>callback</dt><dd>fn(data), called with a single object as an argument on completion of the request. The data object has the properties:
+<dl>
+<dt>status</dt><dd>The status code of the response (200, 404, ...)
+<dt>response</dt><dd>The data returned from the server (HTML, XML, JSON, ...)
+<dt>header</dt><dd>An object containing the header returned by the proxy
+</dl>
+</dd>
+</dl>
+
 </section>
 
 
@@ -171,7 +279,7 @@ jQuery(node).data('mimetypes', {
 	
 	<p>That's it. The app template will now take care of sending this data when the node is dragged.
 	
-	<h2 class="anchor" id="mimetypes">Custom mimetypes</h2>
+	<h2 class="method_title anchor" id="mimetypes">Custom mimetypes</h2>
 	
 	<p>Webdoc accepts the following custom mimetypes and associated data:
 
@@ -277,7 +385,7 @@ text/uri-list: url
 				title = elem.children('h1, h2, h3, h4').eq(0);
 				params = {
 					id: node.id,
-					title: title.length ? title.html() : elem.html()
+					title: elem.data('title') || (title.length ? title.html() : elem.html())
 				};
 				
 				if (entry.length) {
@@ -293,7 +401,7 @@ text/uri-list: url
 			return html;
 		}
 		
-		nav.html(renderList(tree, 'nav_index index', 'subnav_index index'));
+		nav.html(renderList(tree, 'nav_index index'));
 	</script>
 </body>
 </html>
