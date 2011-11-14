@@ -6,6 +6,9 @@ body {
 .api_wrap {
   padding-left: 24em;
   padding-right: 1em;
+  
+  max-width: 86em;
+  margin-left: 0;
 }
 
 .api_nav {
