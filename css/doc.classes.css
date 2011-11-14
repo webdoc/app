@@ -47,3 +47,13 @@ body {
 .nav_index > li > ul {
   list-style: none;
 }
+
+.app_example {
+	width: 400px;
+	height: 500px;
+	border: 1px solid #666666;
+}
+
+.events_dl > dd {
+	margin-bottom: 1.6667em;
+}
