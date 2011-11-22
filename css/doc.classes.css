@@ -65,7 +65,8 @@ body {
 }
 
 .app_example {
-	width: 400px;
+	/* An extra 2px to account for border. */
+	width: 402px;
 	height: 600px;
 	border: 1px solid #666666;
 }

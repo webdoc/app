@@ -84,6 +84,19 @@
 	<p>Follow the instructions above, but at step 2 the<code>&lt;content&gt;</code> src attribute should be an absolute URL pointing to the index file where your app is hosted, and at step 3 your Zip package can contain simply the files config.xml and icon.png.
 </section>
 
+<section class="tab anchor" id="styling">
+	<h1>Template</h1>
+	
+	<p>The app template is a class-based library of CSS and JavaScript for making buttons, tabs, slides, thumbnails and more. It is based on, and extends, webdoc's <a href="#">Template</a> project.</p>
+	
+	<p class="note">Note that you are not obliged to use Template to create your own app! The template is here to help you create apps that match webdoc's styleguide, but you could choose to style your app however you like.</p>
+	
+	<h2 class="anchor" id="temp_overview">Overview</h2>
+	
+	<p>Apps appear in an iframe that is 400px wide and of variable height. Below is an iframe showing examples all the classes the app template makes available.</p>
+	
+	<iframe class="app_example example" src="layout.html"></iframe>
+</section>
 
 <section class="tab anchor" id="prop">
 	<h1>Properties</h1>
@@ -338,7 +351,11 @@ text/uri-list: url
 
 
 		
-		<nav class="api_nav nav" id="nav"></nav>
+		<!--nav class="api_nav nav" id="nav"></nav-->
+		
+		<nav class="api_nav nav" style="background: red;">
+			<ul class="nav_index index"><li><a class="menu_button button" href="#intro">Introduction</a><ul><li><a class="menu_button button" href="#how">How to make a webdoc app</a></li><li><a class="menu_button button" href="#ul">How to upload your app to webdoc</a></li></ul></li><li><a class="menu_button button" href="#prop">Properties</a><ul class="[object Object]"><li><a class="menu_button button" href="#user_prop">.user</a></li><li><a class="menu_button button" href="#host_prop">.host</a></li><li><a class="menu_button button" href="#lang_prop">.lang</a></li></ul></li><li><a class="menu_button button" href="#methods">Methods</a><ul class="[object Object]"><li><a class="menu_button button" href="#ready_method">.ready()</a></li><li><a class="menu_button button" href="#bind_method">.bind()</a></li><li><a class="menu_button button" href="#unbind_method">.unbind()</a></li><li><a class="menu_button button" href="#image_method">.insertImage()</a></li><li><a class="menu_button button" href="#item_method">.insertItem()</a></li><li><a class="menu_button button" href="#insert_method">.insertWidget()</a></li><li><a class="menu_button button" href="#into_method">.insertIntoItem()</a></li><li><a class="menu_button button" href="#fb_method">.fbGraphAPI()</a></li><li><a class="menu_button button" href="#t_method">.t()</a></li><li><a class="menu_button button" href="#t_method">.request()</a></li></ul></li><li><a class="menu_button button" href="#events">Events</a><ul class="[object Object]"><li><a class="menu_button button" href="#ready_event">ready</a></li><li><a class="menu_button button" href="#sel_event">selectionchange</a></li></ul></li><li><a class="menu_button button" href="#dnd">Preparing items for drag and drop</a><ul class="[object Object]"><li><a class="menu_button button" href="#mimetypes">Custom mimetypes</a></li></ul></li><li><a class="menu_button button active" href="#styling">Template</a><ul class="[object Object]"><li><a class="menu_button button" href="#temp_overview">Overview</a></li></ul></li><li><a class="menu_button button" href="#example">Example</a><ul class="[object Object]"><li><a class="menu_button button" href="#init">init.js</a></li><li><a class="menu_button button" href="#sc">soundcloud.js</a></li></ul></li></ul>
+		</nav>
 	</div>
 	
 	<!-- Include jQuery -->
