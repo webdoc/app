@@ -41,6 +41,10 @@ body {
 	background: #cccccc;
 }
 
+.menu_button.active {
+  background: #eeeeee;
+}
+
 /* .thumb */
 
 .widget_thumb {
@@ -54,6 +58,14 @@ body {
 }
 
 /* .index */
+
+.nav_index {
+  border-bottom: 1px solid #999999;
+}
+
+.nav_index:last-child {
+  border-bottom: 0;
+}
 
 .nav_index > li > .menu_button:after {
 	font-size: 0.5em;
@@ -70,16 +82,16 @@ body {
 /* Open and close subnav based on whether its content
    is active. */
 
-.nav_index > li > a ~ ul {
+.nav_index > li > a ~ .index {
   display: none;
 }
 
-.nav_index > li > a.active ~ ul {
+.nav_index > li > a.active ~ .index {
   display: block;
 }
 
-.nav_index > li > ul {
-  list-style: none;
+.subnav_index > li > .menu_button {
+  padding-left: 2.5em;
 }
 
 .app_example {
