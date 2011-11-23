@@ -1,5 +1,18 @@
+body {
+	padding-top: 1em;
+	padding-bottom: 1em;
+}
+
+.method_title {
+	margin-top: 2em;
+}
+
 .api_wrap {
-  padding-left: 16em;
+  padding-left: 24em;
+  padding-right: 1em;
+  
+  max-width: 86em;
+  margin-left: 0;
 }
 
 .api_nav {
@@ -7,17 +20,87 @@
   top: 0;
   left: 0;
   bottom: 0;
-  width: 14em;
+  width: 22em;
   padding: 1em;
+  
+  overflow: auto;
+  
+  border-right: 1px solid #cccccc;
+  background-color: #f8f8f8;
+}
+
+/* .button */
+
+.menu_button {
+	background: transparent;
+	white-space: normal;
+	height: auto;
+}
+
+.menu_button:hover {
+	background: #cccccc;
+}
+
+.menu_button.active {
+  background: #eeeeee;
+}
+
+/* .thumb */
+
+.widget_thumb {
+	padding-top: 48px;
+	width: 48px;
+	
+	-webkit-border-radius: 8px;
+	   -moz-border-radius: 8px;
+	     -o-border-radius: 8px;
+	        border-radius: 8px;
+}
+
+/* .index */
+
+.nav_index {
+  border-bottom: 1px solid #999999;
+}
+
+.nav_index:last-child {
+  border-bottom: 0;
+}
+
+.nav_index > li > .menu_button:after {
+	font-size: 0.5em;
+	position: absolute;
+	right: 0.75em;
+	
+	content: '▶';
+}
+
+.nav_index > li > .menu_button.active:after {
+	content: '▼';
 }
 
 /* Open and close subnav based on whether its content
    is active. */
 
-.nav_index > li > a ~ ul {
+.nav_index > li > a ~ .index {
   display: none;
 }
 
-.nav_index > li > a.active ~ ul {
+.nav_index > li > a.active ~ .index {
   display: block;
+}
+
+.subnav_index > li > .menu_button {
+  padding-left: 2.5em;
+}
+
+.app_example {
+	/* An extra 2px to account for border. */
+	width: 402px;
+	height: 600px;
+	border: 1px solid #666666;
+}
+
+.events_dl > dd {
+	margin-bottom: 1.6667em;
 }
