@@ -132,6 +132,17 @@
 	background-position: 0 0;
 }
 
+.zoom_thumb {
+  padding-top: 16px;
+  width: 16px;
+  background-color: green;
+}
+
+.thumb > .zoom_thumb {
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+}
 
 /* .selected class */
 
@@ -371,6 +382,11 @@
 .thumbs_index > li:last-child,
 .filters_index > li:last-child {
   margin-right: 0;
+}
+
+.thumbs_index > li > .thumb,
+.filters_index > li > .filter {
+  vertical-align: top;
 }
 
 .spaced_thumbs_index {
