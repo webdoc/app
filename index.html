@@ -8,13 +8,14 @@
 	<title>App API</title>
 	
 	<!-- Include template -->
-	<link rel="stylesheet" type="text/css" href="http://webdoc.github.com/template/css/template.reset.css" />
-	<link rel="stylesheet" type="text/css" href="http://webdoc.github.com/template/css/template.typography.css" />
-	<link rel="stylesheet" type="text/css" href="http://webdoc.github.com/template/css/template.typography.12_18.css" />
-	<link rel="stylesheet" type="text/css" href="http://webdoc.github.com/template/css/template.forms.css" />
-	<link rel="stylesheet" type="text/css" href="http://webdoc.github.com/template/css/template.classes.css" />
+	<link rel="stylesheet" href="http://webdoc.github.com/template/css/template.reset.css" />
+	<link rel="stylesheet" href="http://webdoc.github.com/template/css/template.typography.css" />
+	<link rel="stylesheet" href="http://webdoc.github.com/template/css/template.typography.12_18.css" />
+	<link rel="stylesheet" href="http://webdoc.github.com/template/css/template.forms.css" />
+	<link rel="stylesheet" href="http://webdoc.github.com/template/css/template.classes.css" />
 	
-	<link rel="stylesheet" type="text/css" href="css/doc.classes.css" />
+	<link rel="stylesheet" href="css/doc.classes.css" />
+	<link rel="stylesheet" href="css/prettify.desert.css" />
 </head>
 
 <body>
@@ -37,7 +38,7 @@
 	<ol>
 		<li>If you don't have it already, download and install Ruby from <a href="http://www.ruby-lang.org/en/downloads/">www.ruby-lang.org/en/downloads/</a></li>
 		<li>Install Sinatra
-			<pre><code>$ sudo gem install sinatra</code></pre>
+			<pre><code class="prettyprint">$ sudo gem install sinatra</code></pre>
 		</li>
 		<li>Clone the sinatra branch of the app repo from github.
 			<pre><code>$ git clone -b sinatra https://github.com/webdoc/app.git</code></pre>
@@ -96,8 +97,7 @@ $ ruby server.rb</code></pre>
 		<li>Make sure that your config.xml file has your app's name, version and a reference to the index.html file of your app. It should look something like this:
 
 
-<pre><code>
-&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;app version=&quot;1.0&quot;&gt;        
   &lt;name&gt;my_app&lt;/name&gt;
   &lt;version&gt;1.0&lt;/version&gt;
@@ -119,7 +119,7 @@ $ ruby server.rb</code></pre>
 
 	<p>You can also host your app yourself
 
-	<p>Follow the instructions above, but at step 2 the<code>&lt;content&gt;</code> src attribute should be an absolute URL pointing to the index file where your app is hosted, and at step 3 your Zip package can contain simply the files config.xml and icon.png.
+	<p>Follow the instructions above, but at step 2 the <code>&lt;content&gt;</code> src attribute should be an absolute URL pointing to the index file where your app is hosted, and at step 3 your Zip package can contain simply the files config.xml and icon.png.
 </section>
 
 
@@ -582,7 +582,7 @@ $ ruby server.rb</code></pre>
 	<p>The webdoc app template provides a shortcut to make this easy. To create a draggable node in your webdoc app:
 
 	<ol>	
-		<li>Give the node the boolean attribute <code>draggable="draggable"</code>
+		<li>Give the node the boolean attribute <code>draggable="true"</code>
 		<li>Attach the data to send either by defining a JSON object in a data-mimetypes attribute:
 			<pre><code>
 &lt;div draggable=&quot;draggable&quot; data-mimetypes='{&quot;wd-image&quot;:&quot;http://webdoc.com/stelio.gif&quot;,&quot;text/uri-list&quot;:&quot;http://webdoc.com/stelio.gif&quot;}'&gt;Drag me!&lt;/div&gt;
@@ -780,5 +780,7 @@ text/uri-list: url
 	<script src="http://webdoc.github.com/template/js/jquery.transitions.js"></script>
 	<script src="http://webdoc.github.com/template/js/jquery.loading.js"></script>
 	<script src="http://webdoc.github.com/template/js/template.ui.js"></script>
+	<script src="js/doc.ui.js"></script>
+	<script src="js/prettify.js"></script>
 </body>
 </html>
