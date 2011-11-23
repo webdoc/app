@@ -85,7 +85,7 @@
 
 .widget_thumb {
   /* TODO: this is temporary, so we can see it! */
-  background-color: #d0d0d0;
+  /*background-color: #d0d0d0;*/
   
   background-image: url('../images/thumbs/thumb_widget.png');
   background-size: auto;
