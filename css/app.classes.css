@@ -85,7 +85,7 @@
 
 .widget_thumb {
   /* TODO: this is temporary, so we can see it! */
-  /*background-color: #d0d0d0;*/
+  background-color: #d0d0d0;
   
   background-image: url('../images/thumbs/thumb_widget.png');
   background-size: auto;
@@ -133,9 +133,21 @@
 }
 
 .zoom_thumb {
-  padding-top: 16px;
-  width: 16px;
-  background-color: green;
+  padding-top: 24px;
+  width: 24px;
+  
+  -webkit-border-radius: 12px;
+     -moz-border-radius: 12px;
+          border-radius: 12px;
+  
+  background-color: rgba(0,0,0,0.5);
+  background-image: url('../images/app.spritemap.png');
+  background-position: 0 -60px;
+}
+
+.zoom_thumb:hover {
+  background-color: rgba(255,255,255,0.8);
+  background-position: 0 -90px;
 }
 
 .thumb > .zoom_thumb {
