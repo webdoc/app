@@ -180,39 +180,97 @@
 .action_button {
   font-weight: bold;
   
-  color: white;
-  text-shadow: 0 1px #666666;
-  
   /* .action_buttons are for actions that change the webdoc. */
   -webkit-border-radius: 0.3333em;
      -moz-border-radius: 0.3333em;
           border-radius: 0.3333em;
 	
+	color: rgb(102,102,102);
+	
 	background-color: rgb(178,179,180);
-  background-image: -webkit-gradient(linear, left top, left bottom, from(rgb(203,204,205)), to(rgb(178,179,180)));
-  background-image: -webkit-linear-gradient(rgb(203,204,205), rgb(178,179,180));
-  background-image:    -moz-linear-gradient(rgb(203,204,205), rgb(178,179,180));
-  background-image:     -ms-linear-gradient(rgb(203,204,205), rgb(178,179,180));
-  background-image:      -o-linear-gradient(rgb(203,204,205), rgb(178,179,180));
-  background-image:         linear-gradient(rgb(203,204,205), rgb(178,179,180));
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgb(250,250,250)), to(rgb(230,230,230)));
+  background-image: -webkit-linear-gradient(rgb(250,250,250), rgb(230,230,230));
+  background-image:    -moz-linear-gradient(rgb(250,250,250), rgb(230,230,230));
+  background-image:     -ms-linear-gradient(rgb(250,250,250), rgb(230,230,230));
+  background-image:      -o-linear-gradient(rgb(250,250,250), rgb(230,230,230));
+  background-image:         linear-gradient(rgb(250,250,250), rgb(230,230,230));
+
+  border: 1px solid rgb(179,179,179);
+  text-shadow: 0 1px 0 rgb(255,255,255);
+  -webkit-box-shadow: 1px 1px 0 rgb(255,255,255) inset, -1px -1px 0 rgba(255,255,255,.1) inset;
+          box-shadow: 1px 1px 0 rgb(255,255,255) inset, -1px -1px 0 rgba(255,255,255,.1) inset;
 }
 
 .action_button:hover,
 .action_button:focus {
-	color: white;
+	background-color: white;
+	background-image: none;
 }
+
+.action_button:active {
+	color: white;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgb(235,235,235)), to(rgb(250,250,250)));
+  background-image: -webkit-linear-gradient(rgb(235,235,235), rgb(250,250,250));
+  background-image:    -moz-linear-gradient(rgb(235,235,235), rgb(250,250,250));
+  background-image:     -ms-linear-gradient(rgb(235,235,235), rgb(250,250,250));
+  background-image:      -o-linear-gradient(rgb(235,235,235), rgb(250,250,250));
+  background-image:         linear-gradient(rgb(235,235,235), rgb(250,250,250));
+
+  -webkit-box-shadow: 0 0 1px rgba(0,0,0,.15) inset;
+          box-shadow: 0 0 1px rgba(0,0,0,.15) inset;
+}
+
 
 .back_action_button,
 .submit_action_button,
 .primary_action_button {
-	background-color: rgb(121,158,199);
-  background-image: -webkit-gradient(linear, left top, left bottom, from(rgb(127,161,214)), to(rgb(99,127,172)));
-  background-image: -webkit-linear-gradient(rgb(127,161,214), rgb(99,127,172));
-  background-image:    -moz-linear-gradient(rgb(127,161,214), rgb(99,127,172));
-  background-image:     -ms-linear-gradient(rgb(127,161,214), rgb(99,127,172));
-  background-image:      -o-linear-gradient(rgb(127,161,214), rgb(99,127,172));
-  background-image:         linear-gradient(rgb(127,161,214), rgb(99,127,172));
+  color: white;
+  background-color: rgb(88,184,244);
+  background-image: url(<%= asset_path('gradient_fallback.png') %>);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgb(135,207,247)), to(rgb(88,184,244)));
+  background-image: -webkit-linear-gradient(rgb(135,207,247), rgb(88,184,244));
+  background-image:    -moz-linear-gradient(rgb(135,207,247), rgb(88,184,244));
+  background-image:      -o-linear-gradient(rgb(135,207,247), rgb(88,184,244));
+  background-image:         linear-gradient(rgb(135,207,247), rgb(88,184,244));
+  background-position: 1000px 1000px, 0 0;
+  border: 1px solid rgb(61,151,215);
+  text-shadow: 0 1px 0 rgba(0,0,0,.25);
+  -webkit-box-shadow: 1px 1px 0 rgba(255,255,255,.25) inset, -1px -1px 0 rgba(255,255,255,.1) inset;
+          box-shadow: 1px 1px 0 rgba(255,255,255,.25) inset, -1px -1px 0 rgba(255,255,255,.1) inset;
 }
+
+.back_action_button:hover,
+.back_action_button:focus,
+.submit_action_button:hover,
+.submit_action_button:focus,
+.primary_action_button:hover,
+.primary_action_button:focus {
+  color: white;
+  background-color: rgb(135,207,247);
+  background-image: url(<%= asset_path('gradient_fallback.png') %>);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgb(183,226,250)), to(rgb(88,184,244)));
+  background-image: -webkit-linear-gradient(rgb(183,226,250), rgb(88,184,244));
+  background-image:    -moz-linear-gradient(rgb(183,226,250), rgb(88,184,244));
+  background-image:      -o-linear-gradient(rgb(183,226,250), rgb(88,184,244));
+  background-image:         linear-gradient(rgb(183,226,250), rgb(88,184,244));
+}
+
+.back_action_button:active,
+.submit_action_button:active,
+.primary_action_button:active {
+  background-color: rgb(88,184,244);
+  background-image: url(<%= asset_path('gradient_fallback.png') %>);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgb(88,184,244)), to(rgb(135,207,247)));
+  background-image: -webkit-linear-gradient(rgb(88,184,244), rgb(135,207,247));
+  background-image:    -moz-linear-gradient(rgb(88,184,244), rgb(135,207,247));
+  background-image:      -o-linear-gradient(rgb(88,184,244), rgb(135,207,247));
+  background-image:         linear-gradient(rgb(88,184,244), rgb(135,207,247));
+  
+  -webkit-box-shadow: 0 0 1px rgba(0,0,0,.15) inset;
+          box-shadow: 0 0 1px rgba(0,0,0,.15) inset;
+}
+
+
 
 .tab_button {
   height: 2.6667em;
