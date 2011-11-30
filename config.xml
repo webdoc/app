@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <app version="0.1">
   <name>app_template</name>
-  <version>0.1</version>
+  <version>master</version>
   <description>This app template helps app authors get started creating their apps.</description>
-  <content src="http://webdoc.github.com/app/index.html"/>
+  <content src="app.html"/>
 </app>
